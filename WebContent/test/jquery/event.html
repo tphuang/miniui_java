@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>jQuery Test</title>
+    <script type="text/javascript" src="../../scripts/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="../../test/jquery/index.js"></script>
+
+    <style>
+        li {
+            margin: 3px;
+            padding: 3px;
+            background: #EEEEEE;
+        }
+
+        li.hilight {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<ul id="members" data-role="listview" data-filter="true">
+    <li>
+        <a href="#">
+            <h3>John Resig(jQuery的作者)</h3>
+            <p><strong>jQuery Core Lead</strong></p>
+            <p>Boston, United States</p>
+        </a>
+    </li>
+</ul>
+
+<script>
+    function handler(e) {
+        alert($(e.target).html());
+    }
+    // Bind
+//    $( "#members li a" ).on( "click", function( e ) {handler(e);} );
+    $( "#members li a" ).bind( "click", function( e ) {handler(e);} );
+
+    // Live
+//    $( document ).on( "click", "#members li a", function( e ) {handler(e);} );
+    $( "#members li a" ).live( "click", function( e ) {handler(e);} );
+
+    // Delegate
+//    $( "#members" ).on( "click", "li a", function( e ) {handler(e);} );
+    $( "#members" ).delegate( "li a", "click", function( e ) {handler(e);} );
+</script>
+</body>
+
+</html>
